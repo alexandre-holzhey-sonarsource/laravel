@@ -37,7 +37,7 @@ jobs:
       - name: fix code coverage paths
         run: |
           export ESCAPED_REPLACE=$(printf '%s\n' "$GITHUB_WORKSPACE" | sed -e 's/[\/&]/\\&/g')
-          sed -i "s/${ESCAPED_REPLACE}//\/github\/workspace\//g" coverage.xml
+          sed -i "s/${ESCAPED_REPLACE}/\/github\/workspace\//g" coverage.xml
       - name: SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
         env:
