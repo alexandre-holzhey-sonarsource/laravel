@@ -41,7 +41,7 @@ jobs:
       - name: JS Tests
         run: npm run test
       - name: fix JS code coverage paths
-        run: sed -i "s/SF:/SF:\/github\/workspace\//g" coverage.xml
+        run: sed -i "s/SF:/SF:\/github\/workspace\//g" coverage/lcov.info
       - name: SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
         env:
