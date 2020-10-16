@@ -34,6 +34,10 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: ./vendor/bin/phpunit --coverage-clover coverage.xml --log-junit test.xml
+      - name: fix code coverage paths
+        working-directory: ./coverage
+        run: |
+          sed -i 's/\/home\/runner\/work\/laravel\/laravel\//\/github\/workspace\//g' coverage.xml
       - name: SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
         env:
