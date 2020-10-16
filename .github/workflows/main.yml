@@ -36,7 +36,9 @@ jobs:
         run: ./vendor/bin/phpunit --coverage-clover coverage.xml --log-junit test.xml
       - name: fix code coverage paths
         run: |
-          sed -i "s/${GITHUB_WORKSPACE}/${HOME}/g" coverage.xml
+          export ESCAPED_REPLACE=$(printf '%s\n' "$GITHUB_WORKSPACE" | sed -e 's/[\/&]/\\&/g')
+          export ESCAPED_KEYWORD=$(printf '%s\n' "$HOME" | sed -e 's/[]\/$*.^[]/\\&/g');
+          sed -i "s/${ESCAPED_REPLACE}/${ESCAPED_KEYWORD}/g" coverage.xml
       - name: SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
         env:
