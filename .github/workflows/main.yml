@@ -29,15 +29,17 @@ jobs:
         run: |
           mkdir -p database
           touch database/database.sqlite
-      - name: Tests with Coverage
+      - name: PHP Tests
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: ./vendor/bin/phpunit --coverage-clover coverage.xml --log-junit test.xml
-      - name: fix code coverage paths
+      - name: fix PHP code coverage paths
         run: |
           export ESCAPED_REPLACE=$(printf '%s\n' "$GITHUB_WORKSPACE" | sed -e 's/[\/&]/\\&/g')
           sed -i "s/${ESCAPED_REPLACE}/\/github\/workspace\//g" coverage.xml
+      - name: JS Tests
+        run: npm run test
       - name: SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
         env:
