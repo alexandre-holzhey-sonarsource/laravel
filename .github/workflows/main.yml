@@ -37,7 +37,11 @@ jobs:
       - name: fix code coverage paths
         run: |
           export ESCAPED_REPLACE=$(printf '%s\n' "$GITHUB_WORKSPACE" | sed -e 's/[\/&]/\\&/g')
-          export ESCAPED_KEYWORD=$(dirname $GITHUT_EVENT_PATH | sed -e 's/[]\/$*.^[]/\\&/g');
+          export ESCAPED_KEYWORD=$(dirname $GITHUT_EVENT_PATH | sed -e 's/[]\/$*.^[]/\\&/g')
+          echo $GITHUB_WORKSPACE
+          echo $GITHUB_EVENT_PATH
+          echo $ESCAPED_REPLACE
+          echo $ESCAPE_KEYWORD
           sed -i "s/${ESCAPED_REPLACE}/${ESCAPED_KEYWORD}/g" coverage.xml
       - name: SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
