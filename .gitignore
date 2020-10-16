@@ -12,6 +12,7 @@ npm-debug.log
 yarn-error.log
 .idea
 coverage.xml
+test.xml
 /public/js
 /public/css
 /public/build
