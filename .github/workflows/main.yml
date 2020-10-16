@@ -36,7 +36,7 @@ jobs:
         run: ./vendor/bin/phpunit --coverage-clover coverage.xml --log-junit test.xml
       - name: fix code coverage paths
         run: |
-          sed -i 's/\/home\/runner\/work\/laravel\/laravel\//\/github\/workspace\//g' coverage.xml
+          sed -i "s/${GITHUB_WORKSPACE}/${HOME}/g" coverage.xml
       - name: SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
         env:
