@@ -34,10 +34,10 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-clover coverage.xml --log-junit test.xml
-      - name: fix PHP code coverage paths
-        run: |
-          export ESCAPED_REPLACE=$(printf '%s\n' "$GITHUB_WORKSPACE" | sed -e 's/[\/&]/\\&/g')
-          sed -i "s/${ESCAPED_REPLACE}/\/github\/workspace\//g" coverage.xml
+#      - name: fix PHP code coverage paths
+#        run: |
+#          export ESCAPED_REPLACE=$(printf '%s\n' "$GITHUB_WORKSPACE" | sed -e 's/[\/&]/\\&/g')
+#          sed -i "s/${ESCAPED_REPLACE}/\/github\/workspace\//g" coverage.xml
       - name: JS Tests
         run: npm run test
       - name: fix JS code coverage paths
