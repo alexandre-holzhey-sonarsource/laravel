@@ -33,6 +33,7 @@ jobs:
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
+          XDEBUG_MODE: coverage
         run: ./vendor/bin/phpunit --coverage-clover coverage.xml --log-junit test.xml
       - name: fix PHP code coverage paths
         run: |
