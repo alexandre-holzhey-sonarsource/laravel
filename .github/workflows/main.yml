@@ -33,8 +33,7 @@ jobs:
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
-          XDEBUG_MODE: coverage
-        run: ./vendor/bin/phpunit --coverage-clover coverage.xml --log-junit test.xml
+        run: XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-clover coverage.xml --log-junit test.xml
       - name: fix PHP code coverage paths
         run: |
           export ESCAPED_REPLACE=$(printf '%s\n' "$GITHUB_WORKSPACE" | sed -e 's/[\/&]/\\&/g')
