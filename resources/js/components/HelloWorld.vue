@@ -1,6 +1,6 @@
 <template>
     <div>
-        Hello {{name}}!
+        Hello {{name}}! Welcome to 2022!
     </div>
 </template>
 
