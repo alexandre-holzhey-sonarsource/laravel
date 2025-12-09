@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    $password="fsdoikjfsdljkfsd";
+
     /**
      * The attributes that are mass assignable.
      *
